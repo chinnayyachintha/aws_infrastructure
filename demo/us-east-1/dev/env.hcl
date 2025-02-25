@@ -1,3 +1,3 @@
 locals {
-    env = basename(get_terragrunt_dir())
+  env = basename(get_terragrunt_dir())
 }

@@ -3,10 +3,9 @@ remote_state {
   backend = "s3"
   config = {
     encrypt        = true
-    bucket         = "my-terraform-state-bucket-c"
+    bucket         = "ihw-${local.account_vars.locals.aws_account_id}"
     key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = "us-east-1"
-    bucket_lock_enabled  = true
     dynamodb_table = "terraform-state-locks"
   }
   generate = {
@@ -14,6 +13,7 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
 }
+
 
 # Generate an AWS provider block
 generate "provider" {

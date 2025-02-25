@@ -3,12 +3,12 @@ terraform {
 }
 
 include "root" {
-  path   = find_in_parent_folders()
+  path   = find_in_parent_folders("root.hcl")
   expose = true
 }
 
 dependency "vpc" {
-    config_path = "${get_terragrunt_dir()}/../vpc"
+  config_path = "${get_terragrunt_dir()}/../vpc"
 }
 
 dependency "security_group" {
